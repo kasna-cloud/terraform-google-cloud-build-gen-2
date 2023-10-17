@@ -1,7 +1,7 @@
 # Cloud Build 2nd Gen Connection
-This module creates the required resources for a Cloud Build [2nd Gen connection](https://cloud.google.com/build/docs/repositories#repositories_2nd_gen) and links repositories for use in Cloud Build. Google Cloud Build 2nd Gen connections allow you to connect to GitHub, GitHub Enterprise, GitLab (including Self Hosted).
+Google Cloud Build [2nd Gen connections](https://cloud.google.com/build/docs/repositories#repositories_2nd_gen allow you to connect to GitHub, GitHub Enterprise, and GitLab (including Self Hosted).
 
-This Module creates the secrets as well as the required IAM to allow the [Cloud Build Service Agent](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account#service-agent-permissions) to access the secrets and set up the connection to the chosen host. Additionally, you are able to associate one or more repositories with the created connection.
+This module creates the secrets as well as the required IAM to allow the [Cloud Build Service Agent](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account#service-agent-permissions) to access the secrets and set up the connection to the chosen host. Additionally, you are able to associate one or more repositories with the created connection.
 
 ## How to use this Module
 Add the module code with required inputs for the Git Provider you are using. Note that a different set of inputs are required for different providers. The first time you instantiate the module the input `create_connection` should be `false` or not provided, this is because there is a dependency on the secret values being added via the Google Cloud Console or gcloud. Once you have added the secret versions, set `create_connection` to true and the connection as well as related repositories will be created.
@@ -68,7 +68,7 @@ The location of the Secrets created for the selected Git Provider will be provid
 ## Example
 ``` terraform
 module "cloudbuild_v2" {
-  source = ""
+  source = "github.com/kasna-cloud/terraform-google-cloud-build-gen-2"
 
   create_connection = true # set to true once the secrets are added
 
