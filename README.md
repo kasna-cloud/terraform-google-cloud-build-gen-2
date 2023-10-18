@@ -1,5 +1,5 @@
 # Cloud Build 2nd Gen Connection
-Google Cloud Build [2nd Gen connections](https://cloud.google.com/build/docs/repositories#repositories_2nd_gen allow you to connect to GitHub, GitHub Enterprise, and GitLab (including Self Hosted).
+Google Cloud Build [2nd Gen connections](https://cloud.google.com/build/docs/repositories#repositories_2nd_gen) allow you to connect to GitHub, GitHub Enterprise, and GitLab (including Self Hosted).
 
 This module creates the secrets as well as the required IAM to allow the [Cloud Build Service Agent](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account#service-agent-permissions) to access the secrets and set up the connection to the chosen host. Additionally, you are able to associate one or more repositories with the created connection.
 
@@ -23,6 +23,7 @@ Each Git provider has different requirements to create the connection. Review th
 |  [git\_url](#input\_git\_url) | The Host URI of the Git Server you are connecting to | GitLab, GHE | `string` | `null` | no |
 |  [installation\_id](#input\_installation\_id) | Unique Identifier for the installation of the Cloud Build application in your Organisation (One application can have many installations) | ghe | `number` | `null` | no |
 |  [labels](#input\_labels) | List of labels to apply to the Secret resources | All | `map(string)` | `null` | no |
+| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The project to create resources in. Defaults to provider project | All | `string` | `null` | no |
 |  [repositories](#input\_repositories) | List of repositories to create connection to as name = value pair. Defaults to creating none | All | `map(string)` | `{}` | no |
 |  [service\_name](#input\_service\_name) | Service Directory name in format: `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`. | GitLab, GHE | `string` | `null` | no |
 |  [ssl\_ca](#input\_ssl\_ca) | SSL certificate to use for requests to GitHub Enterprise/Self-Hosted GitLab | GitLab, GHE | `string` | `null` | no |
