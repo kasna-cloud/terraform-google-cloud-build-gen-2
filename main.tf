@@ -1,4 +1,5 @@
 data "google_project" "project" {
+  project_id = var.project_id
 }
 
 resource "google_cloudbuildv2_connection" "connection" {
@@ -8,6 +9,7 @@ resource "google_cloudbuildv2_connection" "connection" {
 
   location = var.connection_location
   name     = var.connection_name
+  project  = var.project_id
 
   dynamic "gitlab_config" {
     for_each = (var.git_provider == "gitlab" ? [1] : [])
@@ -72,6 +74,7 @@ resource "google_cloudbuildv2_repository" "cloudbuild_repo" {
   for_each = ((var.create_connection ? var.repositories : {}))
 
   name              = each.key
+  project           = var.project_id
   location          = var.connection_location
   parent_connection = google_cloudbuildv2_connection.connection[0].id
   remote_uri        = each.value

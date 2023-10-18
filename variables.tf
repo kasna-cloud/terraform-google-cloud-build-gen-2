@@ -66,3 +66,9 @@ variable "connection_location" {
   description = "Region to create Cloud Build connection in."
   type        = string
 }
+
+variable "project_id" {
+  description = "The project to create resources in. Defaults to provider project"
+  type        = string
+  default     = null
+}
