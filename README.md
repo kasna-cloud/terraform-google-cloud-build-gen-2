@@ -3,6 +3,9 @@ Google Cloud Build [2nd Gen connections](https://cloud.google.com/build/docs/rep
 
 This module creates the secrets as well as the required IAM to allow the [Cloud Build Service Agent](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account#service-agent-permissions) to access the secrets and set up the connection to the chosen host. Additionally, you are able to associate one or more repositories with the created connection.
 
+The diagram below shows how the different components of Cloud Build 2nd Gen work together and which are provided by this module 
+
+![Diagram of how Gen 2 connections works with emphasis of what the module adds](diagram.png)
 ## How to use this Module
 Add the module code with required inputs for the Git Provider you are using. Note that a different set of inputs are required for different providers. The first time you instantiate the module the input `create_connection` should be `false` or not provided, this is because there is a dependency on the secret values being added via the Google Cloud Console or gcloud. Once you have added the secret versions, set `create_connection` to true and the connection as well as related repositories will be created.
 
